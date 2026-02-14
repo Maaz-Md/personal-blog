@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>New Article</h1>
+
+    <form action="/admin/add" method="POST">
+
+        <div>
+            <label>Title</label><br>
+            <input type="text" name="title" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Date</label><br>
+            <input type="date" name="date" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Content</label><br>
+            <textarea name="body" rows="10" cols="50" required></textarea>
+        </div>
+
+        <br>
+
+        <button type="submit">Create Article</button>
+
+    </form>
+
+    <br>
+    <a href="/admin">← Back to Dashboard</a>
+    
+</body>
+</html>
