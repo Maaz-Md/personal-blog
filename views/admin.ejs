@@ -3,35 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Dashboard – Personal Blog</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     
+    <div class="container admin-page">
 
-    <h1>Personal Blog</h1>
+        <div class="admin-header">
+            <h1>Personal Blog</h1>
+            <a href="/admin/add" class="add-btn">+ Add</a>
+        </div>
 
-    <p>
-        <a href="/admin/add"><button>+ Add New Article</button></a>
-    </p>
+        <hr>
 
-    <% if (articles.length === 0) { %>
-        <p>No articles Yet. Create One</p>
-    <% } else { %>
-        <ul>
-           <% articles.forEach(article => { %>
-                <li>
+        <% if (articles.length === 0) { %>
+            <p>No articles Yet. Create One</p>
+        <% } else { %>
+            <ul>
+            <% articles.forEach(article => { %>
+                    <li class="admin-item">
 
-                    <a href="/articles/<%=article.id %>"><%=article.title %></a>   
-                    <a href="/admin/edit?id=<%= article.id %>">Edit</a>
- |                  <form action="/admin/delete/<%= article.id %>" method="POST" style="display:inline;">
-                        <button type="submit">Delete</button>
-                    </form>
+                        <a href="/articles/<%=article.id %>" class="admin-title"><%=article.title %></a>  
+                        
+                        <div class="admin-actions">
+                            <a href="/admin/edit?id=<%= article.id %>" class="edit-btn">Edit</a>
+                            <form action="/admin/delete/<%= article.id %>" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </div>
 
-                </li>
-                <hr>
-            <% }) %>
-        </ul>
-    <% } %>
-    
+                    </li>
+                
+                <% }) %>
+            </ul>
+        <% } %>
+    </diiv>
 </body>
 </html>

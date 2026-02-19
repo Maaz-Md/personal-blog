@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Article – Personal Blog</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <div class="container form-page">
 
-    <h1>Edit Article</h1>
+        <h1>Edit Article</h1>
 
-<form method="POST" action="/admin/edit">
-    <input type="hidden" name="id" value="<%= article.id %>">
+        <form method="POST" action="/admin/edit">
+            <input type="hidden" name="id" value="<%= article.id %>">
 
-    <div>
-        <label>Title</label><br>
-        <input type="text" name="title" value="<%= article.title %>" required>
+            <div>
+                <label>Title</label><br>
+                <input type="text" name="title" value="<%= article.title %>" required>
+            </div>
+
+            <div>
+                <label>Date</label><br>
+                <input type="date" name="date" value="<%= article.date %>" required>
+            </div>
+
+            <div>
+                <label>Content</label><br>
+                <textarea name="body" required>
+                    <%= article.body %>
+                </textarea>
+            </div>
+
+            <button type="submit">Update Article</button>
+        </form>
+        
     </div>
-
-    <div>
-        <label>Date</label><br>
-        <input type="date" name="date" value="<%= article.date %>" required>
-    </div>
-
-    <div>
-        <label>Content</label><br>
-        <textarea name="body" rows="10" cols="50" required>
-            <%= article.body %>
-        </textarea>
-    </div>
-
-    <button type="submit">Update Article</button>
-</form>
-
     
 </body>
 </html>

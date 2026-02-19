@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= article.title %> – Personal Blog</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <%= article.title %>
-    <hr >
-    <%= article.body %>
+    <div class="container article-page">
+        
+        <h1 class="article-title">
+            <%= article.title %>
+        </h1>
+
+        <p class="article-date">
+            <%= new Date(article.date).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            }) %>
+        </p>
+
+        <hr>
+
+        <div class="article-content">
+            <%= article.body %>
+        </div>
+
+    </div>
 </body>
 </html>
 

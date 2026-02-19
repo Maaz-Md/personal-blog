@@ -1,6 +1,8 @@
 import http from "http";
 import { handleGuestRoutes } from "./routes/guestRoutes.js";
 import { handleAdminRoutes } from "./routes/adminRoutes.js";
+import { handleStaticFiles } from "./staticHandler.js";
+
 
 
 const server = http.createServer((req, res) => {
@@ -8,11 +10,15 @@ const server = http.createServer((req, res) => {
     const url = new URL(req.url, "http://localhost:3000");
     const path = url.pathname;
 
+    if ( handleStaticFiles(req, res, path)) {
+        return;
+    }
+    
     if (handleGuestRoutes(req, res, path)) {
         return;
     }
 
-    else if (handleAdminRoutes(req, res, path)) {
+    if (handleAdminRoutes(req, res, path)) {
         return;
     }
 
@@ -24,5 +30,3 @@ const server = http.createServer((req, res) => {
 server.listen(3000, () => {
     console.log("server running at http://localhost:3000/");
 })
-
-// sync "/" path with "/admin" path 
