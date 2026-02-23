@@ -6,6 +6,25 @@ body {
     background-color: #f9f9f9;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-btn {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #1a73e8;
+    transition: color 0.2s ease;
+}
+
+.login-btn:hover {
+    color: #2409d4;
+    transform: scale(1.05);
+}
+
 .container {
     max-width: 600px;   
     width: 90%;       

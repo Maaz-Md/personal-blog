@@ -6,8 +6,44 @@ import { getAllArticles, getArticleById, createArticle, updateArticle, deleteArt
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname =  pathModule.dirname(__filename);
+ 
+/* ===== BASIC AUTH CONFIG ===== */
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "1234";
+
+function checkBasicAuth(req) {
+    const authHeader = req.headers.authorization;
+
+   //check if auth header exists 
+    if (!authHeader || !authHeader.startsWith("Basic ")) {
+        return false;
+    }
+
+    // extract the encoded string 
+    const base64Credentials = authHeader.split(" ")[1];
+
+    // decide the encoded string  
+    const decoded = Buffer.from(base64Credentials, "base64").toString();
+
+    const [username, password] = decoded.split(":");
+
+    return username === ADMIN_USER && password === ADMIN_PASS;
+}
+
 
 export function handleAdminRoutes(req, res, path) {
+
+    // only allow admin routes 
+    if (!path.startsWith("/admin")) { 
+        return false; 
+    }
+    
+    // protect all admin routes 
+    if (!checkBasicAuth(req)) { 
+        res.writeHead(401, { "WWW-Authenticate": 'Basic realm="Admin Panel"' }); 
+        res.end("Authentication required"); 
+        return true; 
+    }
 
     if (path === "/admin" && req.method == 'GET') {
 

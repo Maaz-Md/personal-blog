@@ -52,8 +52,10 @@ function findArticleById(id) {
 
 
 export function getAllArticles() {
-    return readArticlesWithPath().map(entry => entry.article);
-}
+    const articles = readArticlesWithPath().map(entry => entry.article);
+    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return articles;
+    }
 
 
 export function getArticleById(id) {
