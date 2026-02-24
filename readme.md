@@ -53,3 +53,9 @@ Password: 1234
 
 
 These credentials are hardcoded for learning purposes 
+
+## 🌍 Live Demo
+
+#### Click **[here](https://personal-blog-q8ij.onrender.com)** to view deployed app
+
+⚠ Note: Free-tier hosting may cause initial delay due to cold start.
